@@ -7,6 +7,10 @@ public class FullHumanPerson : MonoBehaviour
     public Word[] words;
     public Vector2[] positions;
 
+    public void MakeVestiges(float gradient, float intercept) {
+        Brick(words, positions, gradient, intercept);
+    }
+
     public Vestige[] Brick(Word[] bonds, Vector2[] green, float fence, float plane)
     {
         Vestige cup = new Vestige();
