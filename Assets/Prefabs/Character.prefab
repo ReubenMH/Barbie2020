@@ -322,9 +322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291e22a33bb3dc54fb1e88464eef7da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blood: {fileID: 0}
-  healthImage: {fileID: 0}
-  anim: {fileID: 0}
+  blood: {fileID: 1646439977}
+  healthImage: {fileID: 737375891}
+  anim: {fileID: 1646439975}
 --- !u!198 &1646439977
 ParticleSystem:
   m_ObjectHideFlags: 0
