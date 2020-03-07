@@ -60,4 +60,21 @@ public class WordDictionary : MonoBehaviour
 
         Debug.Log(json);
     }
+
+    public static Word[] GetRandomWords(int amount){
+        List<int> wordsSelected = new List<int>();
+
+        Word[] words = new Word[amount];
+        for(int i = 0; i < words.Length; i++){
+            int wordIndex = Random.Range(0, Instance.wordList.words.Length);
+            while(wordsSelected.Contains(wordIndex)){
+                wordIndex = Random.Range(0, Instance.wordList.words.Length);
+            }
+
+            words[i] = Instance.wordList.words[wordIndex];
+            wordsSelected.Add(wordIndex);
+        }
+
+        return words;
+    }
 }
