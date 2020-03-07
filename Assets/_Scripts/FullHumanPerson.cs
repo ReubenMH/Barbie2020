@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class FullHumanPerson : MonoBehaviour
 {
+    public BattleSim battleSim;
     public Word[] words;
     public Vector2[] positions;
 
     public void MakeVestiges(float gradient, float intercept) {
-        Brick(words, positions, gradient, intercept);
+        Vestige[] vestiges = Brick(words, positions, gradient, intercept);
+        battleSim.SimulateConflict(vestiges[0], vestiges[1]);
     }
 
     public Vestige[] Brick(Word[] bonds, Vector2[] green, float fence, float plane)
