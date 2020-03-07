@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vestige : MonoBehaviour
+public class Vestige
 {
     public List<Word> aspects;
+    public List<Vector2> wordPositions;
 
     public int hp;
+
+    public Vestige()
+    {
+        aspects = new List<Word>();
+        wordPositions = new List<Vector2>();
+    }
 
     public void SetFullHP()
     {

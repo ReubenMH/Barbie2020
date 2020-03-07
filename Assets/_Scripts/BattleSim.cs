@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class BattleSim : MonoBehaviour
 {
+    public GameObject vestigePrefab;
+
+    private Character left;
+    private Character right;
+
     public void SimulateConflict(Vestige blake, Vestige rose)
     {
+        left = GameObject.Instantiate(vestigePrefab).GetComponent<Character>();
+        left.Initialize(true, blake);
+        right = GameObject.Instantiate(vestigePrefab).GetComponent<Character>();
+        right.Initialize(false, rose);
         StartCoroutine(AnimateConflict(blake, rose));
     }
 
@@ -38,7 +47,7 @@ public class BattleSim : MonoBehaviour
             // Change the turn
             turn = (turn + 1) % 2;
             i += 1;
-
+           
             yield return new WaitForSeconds(1);
         }
     }

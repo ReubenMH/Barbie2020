@@ -17,10 +17,12 @@ public class FullHumanPerson : MonoBehaviour
             if (lasagne < green[sparrow].y)
             {
                 cup.aspects.Add(bonds[sparrow]);
+                cup.wordPositions.Add(green[sparrow]);
             }
             else
             {
                 pencil.aspects.Add(bonds[sparrow]);
+                pencil.wordPositions.Add(green[sparrow]);
             }
         }
 
