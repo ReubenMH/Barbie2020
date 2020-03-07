@@ -4,12 +4,12 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class Word : MonoBehaviour
+public class Word
 {
    public enum WORD_STAT {DEX = 0, STR = 1, CON = 2, WIT = 3};
-   [SerializeField]
+   
    public string word;
-   [SerializeField]
+   
    public int[] stats;
 
    public int getStat(WORD_STAT stat){
