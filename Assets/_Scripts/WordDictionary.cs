@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Json;
-using System.Json.JsonSerializer;
 
 public class WordDictionary : MonoBehaviour
 {
+    [System.Serializable]
+    public class WordCollection{
+        public Word[] words;
+    }
+
     public WordDictionary Instance{
         get{
             return _inst;
@@ -17,7 +20,8 @@ public class WordDictionary : MonoBehaviour
 
     public Dictionary<string, Word> wordDict;
 
-    private Word[] wordList;
+    [SerializeField]
+    private WordCollection wordList;
 
     // Start is called before the first frame update
     void Start()
@@ -25,32 +29,34 @@ public class WordDictionary : MonoBehaviour
         if(_inst == null){
             _inst = this;
             DontDestroyOnLoad(gameObject);
+            LoadWordDict();
         }else{
             Destroy(gameObject);
         }
-
-        TestWordList();
     }
 
     void TestWordList(){
-        wordList = new wordList[5];
-        wordList[0] = new Word("cowardly", 4, 1, 1, 2);
-        wordList[1] = new Word("aggressive", 3, 3, 1, 1);
-        wordList[2] = new Word("fat", 1, 2, 4, 1);
-        wordList[3] = new Word("quick", 5, 1, 1, 3);
-        wordList[4] = new Word("dramatic", 4, 1, 1, 2);
+        wordList.words = new Word[5];
+        wordList.words[0] = new Word("cowardly", 1, -2, -2, 1);
+        wordList.words[1] = new Word("aggressive", 1, 1, -2, -2);
+        wordList.words[2] = new Word("fat", -2, 0, 2, -2);
+        wordList.words[3] = new Word("quick", 3, -2, -2, 1);
+        wordList.words[4] = new Word("dramatic", 2, -2, -2, 0);
+
+        SaveWordDict();
     }
 
     void LoadWordDict(){
-        wordList = JsonSerializer.Deserialize<Word[]>(wordDictFile);
+        wordList = JsonUtility.FromJson<WordCollection>(wordDictFile.ToString());
+        wordDict = new Dictionary<string, Word>();
 
-        for(int i = 0; i < wordList.Length; i++){
-            wordDict.Add(wordList[i].word, wordList[i]);
+        for(int i = 0; i < wordList.words.Length; i++){
+            wordDict.Add(wordList.words[i].word, wordList.words[i]);
         }
     }
 
     void SaveWordDict(){
-        string json = JsonSerializer.Serialize(wordList);
+        string json = JsonUtility.ToJson(wordList);
 
         Debug.Log(json);
     }
