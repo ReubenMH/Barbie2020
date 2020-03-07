@@ -20,6 +20,11 @@ public class Vestige
         hp = GetStat((Word.WORD_STAT.CON));
     }
 
+    public int GetFullHP()
+    {
+        return GetStat((Word.WORD_STAT.CON));
+    }
+
     public int GetStat(Word.WORD_STAT stat)
     {
         int total = 0;
