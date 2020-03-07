@@ -9,12 +9,12 @@ public class WordDictionary : MonoBehaviour
         public Word[] words;
     }
 
-    public WordDictionary Instance{
+    public static WordDictionary Instance{
         get{
             return _inst;
         }
     }
-    private WordDictionary _inst;
+    private static WordDictionary _inst;
 
     public TextAsset wordDictFile;
 
